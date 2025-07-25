@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌸فِينُو صَاحِبَةُ </title>
+<style>
+      body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      /* background: linear-gradient(-45deg, #ffd6ec, #e0f7ff, #fceabb, #e1ffea); */
+      background-size: 400% 400%;
+      /* animation: gradientShift 10s ease infinite; */
+      background-image: url(roses-7314623_960_720.jpg);
+        background-size: cover;     /* Cover full screen */
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .picture-container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      border-radius: 25px;
+      overflow: hidden;
+      /* box-shadow: 0 15px 45px rgba(255, 105, 180, 0.3); */
+      animation: slowRotate 8s ease-in-out infinite alternate;
+      background-color: rgba(255, 255, 255, 0.301); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes slowRotate {
+      from { transform: rotate(-10deg); }
+      to { transform: rotate(10deg); }
+    }
+
+    .picture-container:hover {
+      transform: scale(1.05);
+      box-shadow: 0 25px 60px rgba(255, 182, 193, 0.5);
+      animation-play-state: paused;
+    }
+
+    .picture-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 20px;
+      transition: filter 0.3s ease;
+      box-shadow: 0 30px 50px rgba(255, 182, 193, 0.712);
+      padding-top: 80px;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 40px;
+      pointer-events: none;
+      opacity: 1;
+      user-select: none;
+      z-index: 1000;
+    }
+
+    .emoji-style1 { animation: floatUp1 3s ease-out forwards; }
+    .emoji-style2 { animation: floatUp2 2.5s ease-out forwards; }
+    .emoji-style3 { animation: floatUp3 3.5s ease-out forwards; }
+    .emoji-style4 { animation: floatUp4 2.8s ease-out forwards; }
+    .emoji-style5 { animation: floatUp5 3.2s ease-out forwards; }
+
+    @keyframes floatUp1 {
+      0% { opacity: 1; transform: translate(0, 0) scale(1); }
+      100% { opacity: 0; transform: translate(var(--x), -250px) scale(0.3); }
+    }
+    @keyframes floatUp2 {
+      0% { opacity: 1; transform: scale(0.5); }
+      100% { opacity: 0; transform: translate(var(--x), -300px) scale(0); }
+    }
+    @keyframes floatUp3 {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: translate(var(--x), -280px) scale(0.1); }
+    }
+    @keyframes floatUp4 {
+      0% { opacity: 1; transform: scale(1.2) rotate(0deg); }
+      100% { opacity: 0; transform: translate(var(--x), -320px) scale(0.2) rotate(360deg); }
+    }
+    @keyframes floatUp5 {
+      0% { opacity: 1; transform: scale(0.8); }
+      100% { opacity: 0; transform: translate(var(--x), -350px) scale(0); }
+    }
+
+    .title-on-image {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 26px;
+      color: rgba(255, 182, 193, 0.747);
+      font-weight: bold;
+      text-shadow: 1px 1px 3px white;
+      z-index: 10;
+    }
+</style>
+</head>
+<body>
+  <div class="picture-container">
+    <div class="title-on-image">
+        THIS IS SPECIAL FOR YOU 🌸</div>
+    <img src="02-removebg-preview.png" alt="Your Picture" class="picture-image" />
+  </div>
+<audio autoplay loop hidden>
+  <source src="Purity - Beautiful Piano Song, Relaxing BGM ｜BigRicePiano [Lox_jyvBBEk].mp3" type="audio/mpeg">
+</audio>
+
+  <script>
+    const container = document.querySelector('.picture-container');
+    const styles = ['emoji-style1', 'emoji-style2', 'emoji-style3', 'emoji-style4', 'emoji-style5'];
+    const emojis = ['❤️', '🌸', '💖', '🦋', '✨', '🥰'];
+
+    let lastTime = 0;
+
+    container.addEventListener('mousemove', function (e) {
+      const now = Date.now();
+      if (now - lastTime < 150) return;
+      lastTime = now;
+
+      const emoji = document.createElement('div');
+      const style = styles[Math.floor(Math.random() * styles.length)];
+      const symbol = emojis[Math.floor(Math.random() * emojis.length)];
+
+      emoji.className = `emoji ${style}`;
+      emoji.textContent = symbol;
+
+      const randomX = (Math.random() * 100 - 50) + 'px';
+      emoji.style.setProperty('--x', randomX);
+
+      const rect = container.getBoundingClientRect();
+      emoji.style.left = (e.clientX - rect.left) + 'px';
+      emoji.style.top = (e.clientY - rect.top) + 'px';
+
+      container.appendChild(emoji);
+
+      setTimeout(() => emoji.remove(), 4000);
+    });
+  </script>
+
+</body>
+</html>
